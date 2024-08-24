@@ -1,0 +1,265 @@
+/* General Container */
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #1E1E1E;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Header Text */
+header h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+/* Tasks Section */
+.tasks_section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 20px 20px; /* Adjust padding to account for header and footer */
+  overflow-y: auto;
+}
+
+/* Floating Button */
+.create_task_button {
+  position: fixed;
+  bottom: 80px; /* Above the footer */
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #007AFF;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s;
+  z-index: 1000;
+}
+
+.create_task_button:hover {
+  background-color: #005bb5;
+}
+
+/* Task Bar Styling */
+.tasks_bar {
+  margin-bottom: 20px;
+}
+
+.tasks_bar h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+/* Task Card */
+.task_card {
+  background-color: #1E1E1E;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.task_card h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.task_card p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #AAAAAA;
+}
+
+/* Buttons */
+button {
+  padding: 10px 15px;
+  background-color: #007AFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.stop {
+  background-color: #E63946;
+}
+
+button:hover {
+  background-color: #005bb5;
+}
+
+button.stop:hover {
+  background-color: #d62839;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  background-color: #1E1E1E;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+footer .navbar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+footer .navbar a {
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+footer .navbar a:hover {
+  background-color: #333;
+}
+
+.create_form input, 
+.create_form select, 
+.create_form button {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.create_form input {
+  background-color: #2b2b2b;
+  border: none;
+  color: white;
+}
+
+.create_form select {
+  background-color: #2b2b2b;
+  border: none;
+  color: white;
+}
+
+/* Container for Task Creation Form */
+.create_form_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+/* Form styles */
+.create_form {
+  background-color: #1E1E1E;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+.create_form button {
+  background-color: #6a0dad;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.create_form button:hover {
+  background-color: #5a0a9a;
+}
+
+/* Active and Completed Tasks Section */
+.active_tasks, 
+.completed_tasks {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #1e1e1e;
+  padding: 20px;
+  margin: 10px auto;
+  border-radius: 10px;
+}
+
+.active_tasks h3,
+.completed_tasks h3 {
+  color: #fff;
+}
+
+/* Task item */
+.task_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2b2b2b;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+.task_item h4 {
+  margin: 0;
+  color: #fff;
+}
+
+.task_item p {
+  margin: 0;
+  color: #aaa;
+}
+
+.task_item button {
+  background-color: #e63946;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.task_item button:hover {
+  background-color: #d62839;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.dashboard h2 {
+  margin-bottom: 20px;
+}
+
+.dashboard .chart-container {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+}
