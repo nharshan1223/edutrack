@@ -5,9 +5,9 @@ function Footer() {
   return (
     <footer className="footer">
       <nav className="navbar">
-        <a href="/home">HomePage</a>
-        <a href="/dashboard">DashboardPage</a>
-        <a href="/profile">MyProfile</a>
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/profile">My Profile</a>
       </nav>
     </footer>
   );

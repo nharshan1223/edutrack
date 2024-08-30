@@ -43,7 +43,7 @@ header h1 {
   right: 20px;
   width: 60px;
   height: 60px;
-  background-color: #007AFF;
+  background-color: #6a0dad;
   color: white;
   border: none;
   border-radius: 50%;
@@ -58,7 +58,7 @@ header h1 {
 }
 
 .create_task_button:hover {
-  background-color: #005bb5;
+  background-color: #6a0dad;
 }
 
 /* Task Bar Styling */
@@ -142,27 +142,6 @@ footer .navbar a {
 footer .navbar a:hover {
   background-color: #333;
 }
-
-.create_form input, 
-.create_form select, 
-.create_form button {
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 5px;
-}
-
-.create_form input {
-  background-color: #2b2b2b;
-  border: none;
-  color: white;
-}
-
-.create_form select {
-  background-color: #2b2b2b;
-  border: none;
-  color: white;
-}
-
 /* Container for Task Creation Form */
 .create_form_container {
   display: flex;
@@ -182,8 +161,70 @@ footer .navbar a:hover {
   border-radius: 8px;
   width: 300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  position: relative; /* Ensure the close button is positioned relative to this */
+  display: flex;
+  flex-direction: column;
 }
 
+.create_form .close_button {
+  background-color: #E63946;
+  color: white;
+  border: none;
+  border-radius: 50%; /* Adjust the border radius for a circular button */
+  width: 2px; /* Adjust width to increase button size */
+  height: 2px; /* Adjust height to increase button size */
+  font-size: 15px; /* Increase font size for better visibility */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 10px; /* Add some space between the heading and the button */
+  padding: 0;
+}
+
+.create_form .close_button:hover {
+  background-color: #5a0a9a;
+}
+
+/* Form Header */
+/* Form Header */
+.create_form_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.create_form h2 {
+  margin: 0;
+  font-size: 1.5em;
+  flex-grow: 1; /* Ensure the heading takes up available space */
+  text-align: left; /* Align the text to the left */
+}
+/* Form Inputs and Buttons */
+.create_form input, 
+.create_form select, 
+.create_form button {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  width: calc(100% - 22px); /* Adjust width to fit the form container */
+  box-sizing: border-box;
+}
+
+.create_form input {
+  background-color: #2b2b2b;
+  border: none;
+  color: white;
+}
+
+.create_form select {
+  background-color: #2b2b2b;
+  border: none;
+  color: white;
+}
 
 .create_form button {
   background-color: #6a0dad;
@@ -196,20 +237,29 @@ footer .navbar a:hover {
   background-color: #5a0a9a;
 }
 
+
 /* Active and Completed Tasks Section */
 .active_tasks, 
 .completed_tasks {
-  width: 100%;
-  max-width: 1200px;
-  background-color: #1e1e1e;
+  margin: 20px auto; /* Center alignment and margin */
   padding: 20px;
-  margin: 10px auto;
+  border: 2px solid #444; /* Border color */
   border-radius: 10px;
+  background-color: #1E1E1E; /* Dark background to match the page */
+  color: white; /* Light text color */
+  max-width: 95%;
+  width: 98%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
 }
 
 .active_tasks h3,
 .completed_tasks h3 {
-  color: #fff;
+  margin: 0 auto;
+  padding-bottom: 15px;
+  font-size: 1.5rem; /* Larger font size */
+  color: #fff; /* White text for the header */
+  text-align: left;
 }
 
 /* Task item */
@@ -247,19 +297,537 @@ footer .navbar a:hover {
   background-color: #d62839;
 }
 
-.dashboard {
+.tasks_section {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+/* General Calendar Container */
+.long_term_tasks_calendar {
+  margin: 20px auto; /* Center alignment and margin */
   padding: 20px;
+  border: 2px solid #444; /* Border color */
+  border-radius: 10px;
+  background-color: #1E1E1E; /* Dark background to match the page */
+  color: white; /* Light text color */
+  max-width: 95%;
+  width: 98%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
 }
 
-.dashboard h2 {
+/* Header Style */
+.long_term_tasks_calendar h3 {
+  margin: 0 auto;
+  padding-bottom: 15px;
+  font-size: 1.5rem; /* Larger font size */
+  color: #fff; /* White text for the header */
+  text-align: left; /* Center header text */
+}
+
+/* Calendar Style */
+.react-calendar-container {
+  display: flex;
+  justify-content: center; /* Center the calendar within its container */
+}
+
+.react-calendar {
+  background: #121212; /* Dark background */
+  color: #121212; /* Light text color */
+  border: none; /* Remove border for seamless appearance */
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Month and Year Header Style */
+.react-calendar__navigation__label {
+  font-size: 1rem; /* Larger font size for the month/year header */
+  color: #121212; /* Custom color for the month/year text */
+  text-align: center; 
+}
+
+/* Navigation Buttons (Previous/Next Month) */
+.react-calendar__navigation__arrow {
+  color: #121212; /* Custom color for the navigation arrows */
+}
+
+/* Weekday Headers Style (Unchanged) */
+.react-calendar__month-view__weekdays__weekday {
+  font-size: 0.7rem;
+  color: inherit; /* Use the default inherited color */
+  text-align: center;
+}
+
+
+/* Wider Calendar Tiles */
+.react-calendar__tile {
+  min-width: 1.5rem; /* Increase width for better visibility */
+  min-height: 1.5rem; /* Increase height */
+  display: flex;
+  color: #121212;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem; /* Larger font size in tiles */
+  border-radius: 8px; /* Slightly round the corners */
+}
+
+/* Darker Calendar Tile Content */
+.react-calendar__tile > div {
+  text-align: center;
+  background-color: #333; /* Darker background for tile content */
+  border-radius: 5px;
+  color: #e0e0e0; /* Light text color */
+}
+
+/* Calendar Tile Hover Effect */
+.react-calendar__tile:hover {
+  background-color: #444; /* Slightly lighter background on hover */
+  color: #121212; /* White text color on hover */
+}
+
+/* Active Calendar Tile */
+.react-calendar__tile--active {
+  background-color: #007AFF; /* Accent color for selected tile */
+  color: #ffffff; /* White text color for active tile */
+}
+
+/* Month Heading Style */
+.react-calendar__month-view__weekdays__weekday {
+  color: #121212; /* White color for the weekday headers */
+  text-align: center; /* Center align the month headings */
+}
+
+/* Checkbox Style */
+.task-checkbox {
+  margin-left: 10px;
+  accent-color: #007AFF; /* Accent color for checkbox */
+}
+
+/* Improve readability of tile content */
+.react-calendar__tile > div {
+  padding: 5px;
+
+}
+
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1c1c1c; /* Dark background color */
+  color: #e0e0e0; /* Light text color */
+}
+
+/* Header Container */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #1E1E1E; /* Match this with your overall theme */
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+  position: relative; /* Position relative for dropdown positioning */
+}
+
+/* Title Styling */
+.header-title h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #FFD700; /* Accent color */
+}
+
+/* Extra Header Items (Date and Notification) */
+.header-extra {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+  position: relative; /* Position relative for dropdown positioning */
+}
+
+/* Current Date Styling */
+.header-extra .current-date {
+  font-size: 1rem;
+  margin-right: 20px;
+  color: #FFD700; /* Custom color for date */
+}
+
+/* Notification Icon Styling */
+.header-extra .notification-icon {
+  font-size: 1.5rem;
+  color: #FFD700; /* Custom color for notification icon */
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.notification-dropdown {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #333; /* Dark background for dark theme */
+  border: 1px solid #555; /* Darker border */
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Darker shadow */
+  z-index: 1000;
+}
+
+.notification-dropdown.show {
+  display: block;
+}
+
+.notification-item {
+  padding: 10px;
+  border-bottom: 1px solid #444; /* Darker border for items */
+  color: #eee; /* Light text color for readability */
+}
+
+.dismiss-button {
+  background: none;
+  border: none;
+  color: #FFD700; /* Lighter blue color for buttons */
+  cursor: pointer;
+}
+
+.dismiss-button:hover {
+  color: #121212; /* Darker blue on hover */
+  background-color: #FFD700;
+}
+
+.no-notifications {
+  padding: 10px;
+  text-align: center;
+  color: white; /* Light grey color for no notifications message */
+}
+
+
+
+/* Footer styles */
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  background-color: #1E1E1E;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.footer .navbar {
+  display: flex;
+  justify-content: space-around; /* Space items evenly */
+  width: 100%;
+  max-width: 1200px; /* Max width for alignment */
+}
+
+.footer .navbar a {
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-size: 1em;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.footer .navbar a:hover {
+  background-color: #333;
+  color: #FFD700; /* Change text color on hover */
+}
+
+.profile-page {
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.profile-header {
+  background-color: #1E1E1E;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.dashboard .chart-container {
-  width: 80%;
-  max-width: 800px;
-  margin: 0 auto;
+.profile-content {
+  background-color: #1E1E1E;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
 }
+
+.auth-page {
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.auth-header {
+  background-color: #1E1E1E;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-form {
+  background-color: #1E1E1E;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.auth-form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #444;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #0088FE;
+  color: white;
+  font-size: 1em;
+}
+
+.error {
+  color: #FF6F61;
+}
+
+
+/* Dashboard Page Styles */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dashboard .short-term-performance,
+.dashboard .long-term-performance {
+  margin: 20px auto; /* Center alignment and margin */
+  padding: 20px;
+  border: 2px solid #444; /* Border color */
+  border-radius: 10px;
+  background-color: #1E1E1E; /* Dark background to match the page */
+  color: white; /* Light text color */
+  max-width: 95%;
+  width: 98%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Main Content Area */
+.dashboard .main-content {
+  margin-top: 2px; /* Space for the fixed header */
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Section Title */
+.dashboard .main-content h3 {
+  font-size: 1.7em;
+  margin-bottom: 5px;
+  color: white; /* Gold color for section titles */
+}
+
+.dashboard .main-content h4 {
+  font-size: 1.3em;
+  margin-bottom: 5px;
+  color: white; /* Gold color for section titles */
+}
+
+/* Chart Wrapper */
+.dashboard .recharts-wrapper {
+  background-color: #1E1E1E;
+  border-radius: 0px; /* Rounded corners for charts */
+  padding: 1px;
+  margin-bottom: 30px;
+  width: 90%; /* Full width for responsiveness */
+  max-width: 800px; /* Max width for better alignment */
+}
+
+.dashboard .pie-chart-section {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard .pie-charts {
+  flex: 1;
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Ensure text inside charts is visible */
+.dashboard .recharts-wrapper .recharts-text {
+  color: #FFFFFF; /* White color for high contrast */
+  font-weight: bold; /* Make the text bold for better visibility */
+  font-size: 1.1em; /* Increase the font size slightly */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7); /* Add a subtle shadow for better readability */
+}
+
+/* Adjust padding and alignment for the PieChart component */
+.dashboard .recharts-wrapper .recharts-pie-label-line {
+  stroke: #FFFFFF; /* Ensure the label line is visible */
+}
+
+.dashboard .recharts-wrapper .recharts-pie-label {
+  padding: 0 10px; /* Add padding to prevent text from touching the edges */
+  text-align: center; /* Center-align text inside slices */
+}
+
+
+.dashboard .recharts-wrapper .recharts-pie {
+  font-size: 0.9em;
+}
+
+/* Footer for Dashboard Page */
+.dashboard .footer {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  background-color: #1E1E1E;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.dashboard .footer .navbar {
+  display: flex;
+  justify-content: space-around; /* Space items evenly */
+  width: 100%;
+  max-width: 1200px; /* Max width for alignment */
+}
+
+.dashboard .footer .navbar a {
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-size: 1em;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dashboard .footer .navbar a:hover {
+  background-color: #333;
+  color: #FFD700; /* Change text color on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard .header h1 {
+    font-size: 1.2em; /* Adjust header font size on smaller screens */
+  }
+
+  .dashboard .recharts-wrapper {
+    max-width: 100%; /* Full width on smaller screens */
+    padding: 15px;
+  }
+}
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.login-form {
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-title {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.login-input {
+  width: calc(100% - 2rem);
+  padding: 0.75rem;
+  margin: 0.5rem 1rem;
+  margin-left: 5px;
+  border-radius: 4px;
+  border: none;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.login-button {
+  width: calc(100% - 2rem);
+  padding: 0.75rem;
+  margin: 1rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #6200ea;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #3700b3;
+}
+
+.error-message {
+  color: #cf6679;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+.signup-prompt {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #b0b0b0;
+}
+
+.signup-link {
+  color: #bb86fc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.signup-link:hover {
+  color: #ffffff;
+}
+
