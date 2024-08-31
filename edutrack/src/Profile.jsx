@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Footer from './Footer'; // Import the Footer component
+import './App.css'; // Ensure the styles are properly imported
 
 const ProfilePage = () => {
     const [user, setUser] = useState(null);
@@ -27,15 +29,36 @@ const ProfilePage = () => {
         fetchProfile();
     }, []);
 
+    const handleLogout = async () => {
+        try {
+            const token = localStorage.getItem('refreshToken');
+            await axios.delete('http://localhost:3001/api/logout', {
+                data: { token },
+            });
+            // Clear tokens from local storage
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('refreshToken');
+            // Redirect to login page
+            window.location.href = '/login';
+        } catch (err) {
+            console.error('Logout failed', err);
+        }
+    };
+
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
 
     return (
         <div className="profile-page">
-            <header>
-                <h1>Profile Page</h1>
+            <header className="header">
+                <h1>EduTrack</h1>
+                <div className="auth-buttons">
+                    <button onClick={() => window.location.href = '/login'}>Login</button>
+                    <button onClick={() => window.location.href = '/signup'}>Sign Up</button>
+                    <button onClick={handleLogout}>Logout</button>
+                </div>
             </header>
-            <main>
+            <main className="main">
                 {user && (
                     <div className="user-details">
                         <h2>User Details</h2>
@@ -53,9 +76,7 @@ const ProfilePage = () => {
                     </div>
                 )}
             </main>
-            <footer>
-                <button onClick={() => window.location.href = '/login'}>Logout</button>
-            </footer>
+            <Footer /> {/* Include the Footer component */}
         </div>
     );
 };
